@@ -5,7 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Is Sunscreen Necessary?</title>
 </head>
-<body>
-    test
+<script>
+    function getUserLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                document.getElementById("latitude").value = position.coords.latitude;
+                document.getElementById("longitude").value = position.coords.longitude;
+                document.forms["get_location"].submit(); 
+            }, (error) => {
+                console.error("Error getting location:", error);
+                alert("Unable to retrieve location.");
+            });
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+</script>
+<body <% if (!user_latitude) { %> onload="getUserLocation()" <% } %>>
+    <form method="post" name="get_location" action="/location">
+        <input type="hidden" id="latitude" name="latitude" value="">
+        <input type="hidden" id="longitude" name="longitude" value="">
+    </form>
 </body>
 </html>
