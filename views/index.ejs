@@ -35,8 +35,11 @@
     <p>Wrong address? Use this text field to sent new latitude and longitude.</p>
     <div class="location">
         <form method="post" action="/location">
-            <input type="text" id="lat" name="latitude" value="<%= user_location.latitude %>"/>
-            <input type="text" id="long" name="longitude" value="<%= user_location.longitude %>"/>
+            <label for="lat">Latitude: </label>
+            <input type="text" id="lat" name="latitude" placeholder="<%= user_location.latitude %>"/>
+
+            <label for="long">Longitude: </label>
+            <input type="text" id="long" name="longitude" placeholder="<%= user_location.longitude %>"/>
             <input type="submit" value="submit"/>
         </form>
     </div>
