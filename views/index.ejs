@@ -26,5 +26,23 @@
         <input type="hidden" id="latitude" name="latitude" value="">
         <input type="hidden" id="longitude" name="longitude" value="">
     </form>
+
+    <% if ( user_location ) { %>
+    <p>Your current location uv index is <%= uv %></p>
+
+    <p><%= uv_text %></p>
+
+    <p>Wrong address? Use this text field to sent new latitude and longitude.</p>
+    <div class="location">
+        <form method="post" action="/location">
+            <input type="text" id="lat" name="latitude" value="<%= user_location.latitude %>"/>
+            <input type="text" id="long" name="longitude" value="<%= user_location.longitude %>"/>
+            <input type="submit" value="submit"/>
+        </form>
+    </div>
+
+    <% } else { %>
+        This browser doesn't support our website.
+    <% } %>
 </body>
 </html>
